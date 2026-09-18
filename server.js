@@ -2,6 +2,7 @@ import express from "express";
 import apiRouter from "./routes/api.js";
 
 const app = express();
+app.set("view engine", "ejs");
 const PORT = 3000;
 
 app.get("/", (req, res) => {
@@ -12,6 +13,10 @@ app.use("/api", apiRouter);
 
 app.get("/hello", (req, res) => {
   res.send("I am learning how to create a website.");
+});
+
+app.get("/about", (req, res) => {
+  res.render("about", { title: "About" });
 });
 
 app.get("/hello/:name", (req, res) => {
